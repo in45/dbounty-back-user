@@ -28,8 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('username_linkedin')->nullable();
             $table->string('username_github')->nullable();
             $table->string('username_crisis')->nullable();
-            $table->string('profession')->nullable();
-            $table->string('role')->nullable();//hunter,sysalpha,sysbeta
+            $table->boolean('state')->default(1);//1:normal,0:banned
             $table->string('link_nic')->nullable(); //national identity card
             $table->timestamps();
             $table->softDeletes();

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Company;
 use App\Models\CompanyManager;
-use App\Models\User;
+use App\Models\Manager;
 use Faker\Factory;
 
 class CompanyManagerSeeder extends Seeder
@@ -21,15 +21,12 @@ class CompanyManagerSeeder extends Seeder
         CompanyManager::truncate();
         $faker = Factory::create();
         $companies = Company::all();
-        $users = User::all()->pluck('compte_address');
+        $managers = Manager::all()->pluck('compte_address');
         foreach($companies as $companie){
-            $rand = rand(0,count($users)-1);
+            $rand = rand(0,count($managers)-1);
             $companie_manager = new CompanyManager();
             $companie_manager->company_id = $companie->id;
-            $companie_manager->manager_address = $users[$rand];
-            $user = User::where('compte_address',$users[$rand])->first();
-            $user->role = $faker->randomElement(['sysalpha', 'sysbeta']);
-            $user->save();
+            $companie_manager->manager_address = $managers[$rand];
             $companie_manager->save();
 
         }

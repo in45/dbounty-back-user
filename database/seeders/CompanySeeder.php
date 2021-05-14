@@ -33,7 +33,8 @@ class CompanySeeder extends Seeder
                 'beta_code' => substr(strtoupper(chunk_split(Str::random(16), 4, '-')),0,-1),
                 'email' => $faker->email,
                 'phone' => $faker->e164PhoneNumber,
-                'description'=>  $faker->Realtext(30),
+                'description'=> $faker->realText(200,2),
+                'balance' =>$faker->numberBetween(100,5000),
                 'created_at' =>  Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' =>  Carbon::now()->format('Y-m-d H:i:s')
             ]);

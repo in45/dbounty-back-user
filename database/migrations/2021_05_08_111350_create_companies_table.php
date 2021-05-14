@@ -23,6 +23,7 @@ class CreateCompaniesTable extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->text('description')->nullable();
+             $table->unsignedInteger('balance')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -22,7 +22,7 @@ class CompanyController extends Controller
     {
         $company = Company::findOrFail($id);
         if($request->input('name')) $company->name = $request->input('name');
-        if($request->input('website_url')) $company->website = $request->input('website');
+        if($request->input('website')) $company->website = $request->input('website');
         if($request->input('description')) $company->sdescription = $request->input('description');
         if($request->input('compte_address')) $company->compte_address = $request->input('compte_address');
         $company->save();
