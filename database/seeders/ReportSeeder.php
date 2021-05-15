@@ -33,7 +33,7 @@ class ReportSeeder extends Seeder
             $rand_vuln = rand(0,count($vulns)-1);
             $rand_user = rand(0,count($users)-1);
             DB::table('reports')->insert([
-                'name' => 'Program'.$i.'_'.Carbon::now()->format('Y-m-d H:i:s'),
+                'title' => 'Program'.$i.'_'.Carbon::now()->format('Y-m-d H:i:s'),
                 'target' => $faker->randomElement([$faker->domainName,$faker->ipv4]),
                 'vuln_id' => $vulns[$rand_vuln],
                 'user_address' => $users[$rand_user],

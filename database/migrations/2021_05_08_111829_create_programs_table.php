@@ -25,7 +25,7 @@ class CreateProgramsTable extends Migration
             $table->timestamp('begin_at')->nullable();
             $table->timestamp('finish_at')->nullable();
             $table->integer('range_response')->default(0);//days
-            $table->text('description')->nullable();
+            $table->json('description')->nullable();
             $table->text('scopes')->nullable();
             $table->text('rules')->nullable();
             $table->text('conditions')->nullable();
