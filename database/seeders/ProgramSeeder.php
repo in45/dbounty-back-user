@@ -30,11 +30,11 @@ class ProgramSeeder extends Seeder
             $days = $faker->numberBetween(0,2);
             $hours = $faker->numberBetween(0,23);
             $description["info"] = $faker->realText(300,2);
-            $rewards["p1"] = $faker->numberBetween($min = 10, $max = 100).'-'.$faker->numberBetween($min = 101, $max = 900);
-            $rewards["p2"] = $faker->numberBetween($min = 10, $max = 100).'-'.$faker->numberBetween($min = 101, $max = 900);
-            $rewards["p3"] = $faker->numberBetween($min = 10, $max = 100).'-'.$faker->numberBetween($min = 101, $max = 900);
-            $rewards["p4"] = $faker->numberBetween($min = 10, $max = 100).'-'.$faker->numberBetween($min = 101, $max = 900);
-            $rewards["p5"] = $faker->numberBetween($min = 10, $max = 100).'-'.$faker->numberBetween($min = 101, $max = 900);
+            $rewards["p1"] = $faker->numberBetween($min = 10, $max = 100).' - '.$faker->numberBetween($min = 101, $max = 900);
+            $rewards["p2"] = $faker->numberBetween($min = 10, $max = 100).' - '.$faker->numberBetween($min = 101, $max = 900);
+            $rewards["p3"] = $faker->numberBetween($min = 10, $max = 100).' - '.$faker->numberBetween($min = 101, $max = 900);
+            $rewards["p4"] = $faker->numberBetween($min = 10, $max = 100).' - '.$faker->numberBetween($min = 101, $max = 900);
+            $rewards["p5"] = $faker->numberBetween($min = 10, $max = 100).' - '.$faker->numberBetween($min = 101, $max = 900);
             $description["rewards"] = $rewards;
             $finish_at = Carbon::now()->addDays($days)->addHours($hours);
             $company = $companies[rand(0,count($companies)-1)];

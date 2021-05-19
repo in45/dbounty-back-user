@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
 
         for ($i = 1; $i < 100; $i++) {
             DB::table('users')->insert([
-                'compte_address'=>'0x'.Str::random(40),
+                'public_address'=>'0x'.Str::random(40),
                 'first_name' => $faker->randomElement([$faker->firstNameMale,$faker->firstNameFemale]),
                 'last_name' => $faker->lastName,
                 'username' => $faker->name,

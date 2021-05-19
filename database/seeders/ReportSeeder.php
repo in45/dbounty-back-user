@@ -24,7 +24,7 @@ class ReportSeeder extends Seeder
         Report::truncate();
         $programs = Program::all()->pluck('id');
         $vulns = Vulnerability::all()->pluck('id');
-        $users = User::all()->pluck('compte_address');
+        $users = User::all()->pluck('public_address');
 
         $faker = Factory::create();
 
@@ -42,7 +42,7 @@ class ReportSeeder extends Seeder
                 'vuln_details' => $faker->text($maxNbChars = 50),
                 'validation_steps' => $faker->text,
                 'severity' => $faker->randomElement(['low','medium','high','critical']),
-                'status' => $faker->randomElement(['new','na','info','accepted','duplicate','fixed','disclosed']),
+                'status' => $faker->randomElement(['new', 'needs more info', 'triaged', 'accepted', 'resolved', 'duplicate', 'informative', 'not applicable']),
                 'bounty_win' => $faker->numberBetween($min = 100, $max = 9000),
                 'created_at' =>  Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' =>  Carbon::now()->format('Y-m-d H:i:s')

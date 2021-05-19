@@ -25,7 +25,9 @@ class CreateReportsTable extends Migration
             $table->text('validation_steps');
             $table->string('severity');//low,medium,high,critical
             $table->string('file_upload')->nullable();
-            $table->string('status')->default('new');//new,na,info,,accepted,duplicated,fixed,disclosed
+            $table->string('status')->default('new');//new,needs more info,triaged,resolved,accepted,duplicate,informative,not applicable
+             $table->string('assigned_to_admin')->nullable();
+            $table->string('assigned_to_manager')->nullable();
             $table->integer('bounty_win')->nullable();//tokens
             $table->timestamps();
             $table->softDeletes();

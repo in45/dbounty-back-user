@@ -14,10 +14,9 @@ class CreateAdminsTable extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->string('compte_address')->primary();
+            $table->string('public_address')->primary();
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->string('avatar')->default("http://via.placeholder.com/640x480.png/0000ff?text=admin");
             $table->boolean('first_time_login')->default(1);
             $table->string('role')->nullable();//sudo : all permissions,sysmanage : manage reports,sysmoni : monitoring
             $table->timestamps();

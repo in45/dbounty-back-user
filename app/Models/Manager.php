@@ -11,10 +11,20 @@ class Manager extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $primaryKey = 'public_address';
     protected static function boot()
     {
         parent::boot();
         static::addGlobalScope(new OrderScope('created_at', 'desc'));
 
+    }
+    public function getIncrementing()
+    {
+        return false;
+    }
+
+    public function getKeyType()
+    {
+        return 'string';
     }
 }

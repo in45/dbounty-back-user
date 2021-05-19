@@ -22,7 +22,7 @@ class ProgramUserSeeder extends Seeder
         // Let's truncate our existing records to start from scratch.
         ProgramUser::truncate();
         $programs = Program::all()->pluck('id');
-        $users = User::all()->pluck('compte_address');
+        $users = User::all()->pluck('public_address');
 
         $faker = Factory::create();
 

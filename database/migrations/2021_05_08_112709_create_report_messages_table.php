@@ -19,6 +19,7 @@ class CreateReportMessagesTable extends Migration
             $table->string('from');
             $table->string('to');
             $table->text('message');
+            $table->string('type')->nullable();// manager / admin
             $table->string('attachment');
             $table->boolean('read')->default(0);
             $table->timestamps();

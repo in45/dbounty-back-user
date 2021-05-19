@@ -12,7 +12,7 @@ class Admin extends Model
     use HasFactory;
 
     use SoftDeletes;
-    protected $primaryKey = 'compte_address';
+    protected $primaryKey = 'public_address';
     protected static function boot()
     {
         parent::boot();

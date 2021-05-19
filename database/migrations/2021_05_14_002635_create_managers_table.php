@@ -14,7 +14,7 @@ class CreateManagersTable extends Migration
     public function up()
     {
         Schema::create('managers', function (Blueprint $table) {
-            $table->string('compte_address')->primary();
+            $table->string('public_address')->primary();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('username')->unique();
