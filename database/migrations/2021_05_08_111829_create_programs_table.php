@@ -18,7 +18,7 @@ class CreateProgramsTable extends Migration
             $table->string('name');
             $table->integer('company_id');
             $table->string('type')->default('public');//public,private,test
-            $table->string('logo')->default("http://via.placeholder.com/640x480.png/8F82A0?text=program");
+            $table->string('logo')->default("http://via.placeholder.com/640x480.png/14c9ac?text=program");
             $table->string('status')->default('none');// 0:none , 1:new , 2:open , 3:closed
             $table->float('min_bounty')->default(0);
             $table->float('max_bounty')->default(0);

@@ -29,6 +29,7 @@ class CreateReportsTable extends Migration
              $table->string('assigned_to_admin')->nullable();
             $table->string('assigned_to_manager')->nullable();
             $table->integer('bounty_win')->nullable();//tokens
+            $table->timestamp('bounty_at')->nullable();//date
             $table->timestamps();
             $table->softDeletes();
         });

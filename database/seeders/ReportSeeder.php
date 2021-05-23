@@ -44,6 +44,7 @@ class ReportSeeder extends Seeder
                 'severity' => $faker->randomElement(['low','medium','high','critical']),
                 'status' => $faker->randomElement(['new', 'needs more info', 'triaged', 'accepted', 'resolved', 'duplicate', 'informative', 'not applicable']),
                 'bounty_win' => $faker->numberBetween($min = 100, $max = 9000),
+                'bounty_at' =>  Carbon::now()->format('Y-m-d H:i:s'),
                 'created_at' =>  Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' =>  Carbon::now()->format('Y-m-d H:i:s')
             ]);
