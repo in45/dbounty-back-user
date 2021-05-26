@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
                 'last_name' => $faker->lastName,
                 'username' => $faker->name,
                 'avatar' =>"http://via.placeholder.com/640x480.png/14C9AC?text=hunter".$i,
-                'score' =>$faker->numberBetween(100,5000),
+                'reputation' =>$faker->numberBetween(100,5000),
                 'country' =>$faker->country,
                 'phone' => $faker->e164PhoneNumber,
                 'created_at' =>  Carbon::now()->format('Y-m-d H:i:s'),

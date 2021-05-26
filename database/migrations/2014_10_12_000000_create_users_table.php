@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('username')->unique();
             $table->string('avatar')->default("http://via.placeholder.com/640x480.png/14C9AC?text=hunter");
-            $table->unsignedInteger('score')->default(0);
+            $table->unsignedInteger('reputation')->default(0);
             $table->string('country')->nullable();
             $table->string('phone')->nullable();
             $table->boolean('first_time_login')->default(1);
