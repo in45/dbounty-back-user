@@ -43,7 +43,7 @@ class ProgramSeeder extends Seeder
                 'company_id' =>$company,
                 'type' =>  $faker->randomElement(['public','private','test']),
                 'logo' =>  "http://via.placeholder.com/640x480.png/14c9ac?text=program",
-                'status' => $faker->randomElement(['none','new','open','closed']),
+                'status' => $faker->randomElement(['pending','new','open','closed']),
                 'min_bounty' =>$faker->numberBetween($min = 10, $max = 900),
                 'max_bounty' =>$faker->numberBetween($min = 100, $max = 900),
                 'begin_at' => $begin_at,

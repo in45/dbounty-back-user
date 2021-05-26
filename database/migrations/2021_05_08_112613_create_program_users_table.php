@@ -16,7 +16,7 @@ class CreateProgramUsersTable extends Migration
         Schema::create('program_users', function (Blueprint $table) {
             $table->id();
             $table->integer('prog_id');
-            $table->string('user_address');
+            $table->uuid('user_id');
             $table->boolean('thanks')->default(0);
             $table->boolean('accept_inv')->default(0);//if private program
             $table->timestamps();

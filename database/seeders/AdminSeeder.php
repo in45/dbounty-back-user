@@ -26,9 +26,11 @@ class AdminSeeder extends Seeder
 
         for ($i = 1; $i < 11; $i++) {
             DB::table('admins')->insert([
+                'id'=>$faker->uuid,
+                'email' => $faker->email,
+                'password' => bcrypt("admin123"),
                 'public_address'=>'0x'.Str::random(40),
                 'username' => 'admin'.$i,
-                'email' => $faker->email,
                 'role' => $faker->randomElement(['sudo', 'sysmanage', 'sysmoni']),
                 'created_at' =>  Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' =>  Carbon::now()->format('Y-m-d H:i:s')

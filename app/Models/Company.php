@@ -33,7 +33,7 @@ class Company extends Model
     {
         //$user = Auth::user();
         $id = '1';
-        $managers = $this->managers->pluck('manager_address')->toArray();
+        $managers = $this->managers->pluck('manager_id')->toArray();
         return in_array($id, $managers);
     }
 }

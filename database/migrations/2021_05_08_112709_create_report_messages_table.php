@@ -16,8 +16,8 @@ class CreateReportMessagesTable extends Migration
         Schema::create('report_messages', function (Blueprint $table) {
             $table->id();
             $table->integer('report_id');
-            $table->string('from');
-            $table->string('to');
+            $table->uuid('from');
+            $table->uuid('to');
             $table->text('message');
             $table->string('type')->nullable();// manager / admin
             $table->string('attachment');

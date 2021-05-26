@@ -16,7 +16,7 @@ class CreateCompanyManagersTable extends Migration
         Schema::create('company_managers', function (Blueprint $table) {
             $table->id();
             $table->integer('company_id');
-            $table->string('manager_address');
+            $table->uuid('manager_id');
             $table->timestamps();
             $table->softDeletes();
         });

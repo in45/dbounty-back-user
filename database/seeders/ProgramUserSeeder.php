@@ -22,7 +22,7 @@ class ProgramUserSeeder extends Seeder
         // Let's truncate our existing records to start from scratch.
         ProgramUser::truncate();
         $programs = Program::all()->pluck('id');
-        $users = User::all()->pluck('public_address');
+        $users = User::all()->pluck('id');
 
         $faker = Factory::create();
 
@@ -31,7 +31,7 @@ class ProgramUserSeeder extends Seeder
             $rand_user = rand(0,count($users)-1);
             DB::table('program_users')->insert([
                 'prog_id' => $programs[$rand_prog],
-                'user_address' => $users[$rand_user],
+                'user_id' => $users[$rand_user],
                 'thanks' => $faker->randomElement(['0','1']),
                 'accept_inv' => $faker->randomElement(['0','1']),
                 'created_at' =>  Carbon::now()->format('Y-m-d H:i:s'),

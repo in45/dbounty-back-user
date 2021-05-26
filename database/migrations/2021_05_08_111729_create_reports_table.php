@@ -18,7 +18,7 @@ class CreateReportsTable extends Migration
             $table->string('title');
             $table->string('target');
             $table->integer('vuln_id')->nullable();
-            $table->string('user_address');
+            $table->uuid('user_id');
             $table->integer('prog_id');
             $table->string('vuln_name')->nullable();
             $table->text('vuln_details')->nullable();
@@ -26,8 +26,8 @@ class CreateReportsTable extends Migration
             $table->string('severity');//low,medium,high,critical
             $table->string('file_upload')->nullable();
             $table->string('status')->default('new');//new,needs more info,triaged,resolved,accepted,duplicate,informative,not applicable
-             $table->string('assigned_to_admin')->nullable();
-            $table->string('assigned_to_manager')->nullable();
+             $table->uuid('assigned_to_admin')->nullable();
+            $table->uuid('assigned_to_manager')->nullable();
             $table->integer('bounty_win')->nullable();//tokens
             $table->timestamp('bounty_at')->nullable();//date
             $table->timestamps();

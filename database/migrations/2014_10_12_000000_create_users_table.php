@@ -14,11 +14,13 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->string('public_address')->primary();
+            $table->uuid('id')->primary();
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('public_address');
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('username')->unique();
-            $table->string('email')->unique();
             $table->string('avatar')->default("http://via.placeholder.com/640x480.png/14C9AC?text=hunter");
             $table->unsignedInteger('score')->default(0);
             $table->string('country')->nullable();
@@ -30,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('username_crisis')->nullable();
             $table->boolean('state')->default(1);//1:normal,0:banned
             $table->string('link_nic')->nullable(); //national identity card
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

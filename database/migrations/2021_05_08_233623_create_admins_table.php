@@ -14,9 +14,11 @@ class CreateAdminsTable extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->string('public_address')->primary();
-            $table->string('username')->unique();
+            $table->uuid('id')->primary();
             $table->string('email')->unique();
+            $table->string('password');
+            $table->string('public_address');
+            $table->string('username')->unique();
             $table->boolean('first_time_login')->default(1);
             $table->string('role')->nullable();//sudo : all permissions,sysmanage : manage reports,sysmoni : monitoring
             $table->timestamps();

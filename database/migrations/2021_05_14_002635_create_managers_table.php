@@ -14,13 +14,16 @@ class CreateManagersTable extends Migration
     public function up()
     {
         Schema::create('managers', function (Blueprint $table) {
-            $table->string('public_address')->primary();
+            $table->uuid('id')->primary();
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('public_address');
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('username')->unique();
-            $table->string('email')->unique();
             $table->string('avatar')->default("http://via.placeholder.com/640x480.png/FF0000?text=manager");
             $table->string('role')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

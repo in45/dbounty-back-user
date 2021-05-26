@@ -24,13 +24,13 @@ class ProgramController extends Controller
     }
       public function getUserPrograms($user_id)
     {
-        return ProgramUser::with('program')->where('user_address',$user_id)->get();
+        return ProgramUser::with('program')->where('user_id',$user_id)->get();
     }
     public function getUsers($id)
     {
         return ProgramUser::with('user')->where('prog_id',$id)->limit(10)->get();
     }
-   
+
 
     public function store(Request $request)
     {

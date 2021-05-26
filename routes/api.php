@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ReportController;
@@ -19,10 +20,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::pattern('user_id', '0x[0-9a-zA-Z]{40}');
+Route::pattern('user_id', '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}');
 
 //API For Users
-
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::group(['middleware' => ['is.auth']], function() {
+    Route::get('me', [AuthController::class, 'me']);
+});
 Route::get('users', [UserController::class, 'index']);
 Route::get('users/{user_id}', [UserController::class, 'show']);
 Route::get('users/{user_id}/reports', [ReportController::class, 'getUserReports']);

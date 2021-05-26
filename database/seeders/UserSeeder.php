@@ -25,11 +25,13 @@ class UserSeeder extends Seeder
 
         for ($i = 1; $i < 100; $i++) {
             DB::table('users')->insert([
+                'id'=>$faker->uuid,
+                'email' => $faker->email,
+                'password' => bcrypt("user123"),
                 'public_address'=>'0x'.Str::random(40),
                 'first_name' => $faker->randomElement([$faker->firstNameMale,$faker->firstNameFemale]),
                 'last_name' => $faker->lastName,
                 'username' => $faker->name,
-                'email' => $faker->email,
                 'avatar' =>"http://via.placeholder.com/640x480.png/14C9AC?text=hunter".$i,
                 'score' =>$faker->numberBetween(100,5000),
                 'country' =>$faker->country,

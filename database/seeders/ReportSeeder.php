@@ -24,7 +24,7 @@ class ReportSeeder extends Seeder
         Report::truncate();
         $programs = Program::all()->pluck('id');
         $vulns = Vulnerability::all()->pluck('id');
-        $users = User::all()->pluck('public_address');
+        $users = User::all()->pluck('id');
 
         $faker = Factory::create();
 
@@ -36,7 +36,7 @@ class ReportSeeder extends Seeder
                 'title' => 'Program'.$i.'_'.Carbon::now()->format('Y-m-d H:i:s'),
                 'target' => $faker->randomElement([$faker->domainName,$faker->ipv4]),
                 'vuln_id' => $vulns[$rand_vuln],
-                'user_address' => $users[$rand_user],
+                'user_id' => $users[$rand_user],
                 'prog_id' => $programs[$rand_prog],
                 'vuln_name' => $faker->text($maxNbChars = 20),
                 'vuln_details' => $faker->text($maxNbChars = 50),

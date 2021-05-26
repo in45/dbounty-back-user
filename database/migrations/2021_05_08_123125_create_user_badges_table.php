@@ -16,7 +16,7 @@ class CreateUserBadgesTable extends Migration
         Schema::create('user_badges', function (Blueprint $table) {
             $table->id();
             $table->integer('badge_id');
-            $table->string('user_address');
+            $table->uuid('user_id');
             $table->timestamps();
             $table->softDeletes();
         });

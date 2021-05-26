@@ -17,17 +17,17 @@ class CompanyManagerSeeder extends Seeder
      */
     public function run()
     {
-        
+
         // Let's truncate our existing records to start from scratch.
         CompanyManager::truncate();
         $faker = Factory::create();
         $companies = Company::all();
-        $managers = Manager::all()->pluck('public_address');
+        $managers = Manager::all()->pluck('id');
         foreach($companies as $companie){
             $rand = rand(0,count($managers)-1);
             $companie_manager = new CompanyManager();
             $companie_manager->company_id = $companie->id;
-            $companie_manager->manager_address = $managers[$rand];
+            $companie_manager->manager_id = $managers[$rand];
             $companie_manager->save();
 
         }

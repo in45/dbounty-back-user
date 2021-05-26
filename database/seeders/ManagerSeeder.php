@@ -26,11 +26,13 @@ class ManagerSeeder extends Seeder
 
         for ($i = 1; $i < 50; $i++) {
             DB::table('managers')->insert([
+                'id'=>$faker->uuid,
+                'email' => $faker->email,
+                'password' => bcrypt("manager123"),
                 'public_address'=>'0x'.Str::random(40),
                 'first_name' => $faker->randomElement([$faker->firstNameMale,$faker->firstNameFemale]),
                 'last_name' => $faker->lastName,
                 'username' => $faker->name,
-                'email' => $faker->email,
                 'avatar' =>"http://via.placeholder.com/640x480.png/ffff00?text=manager".$i,
                'role' => $faker->randomElement(['sysalpha', 'sysbeta']),
                 'created_at' =>  Carbon::now()->format('Y-m-d H:i:s'),
