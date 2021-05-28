@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -29,6 +30,15 @@ class ReportController extends Controller
        public function getUserReports($user_id)
     {
         return Report::with(['program','vuln'])->where('user_id',$user_id)->get();
+    }
+     public function getMyReports()
+    {
+        return Report::with(['program','vuln'])->where('user_id',Auth::user()->id)->paginate(6);
+    }
+
+       public function getMyProgramrReport($id)
+    {
+        return Report::with(['program','vuln'])->where('user_id',Auth::user()->id)->where('prog_id',$id)->first();
     }
 
 

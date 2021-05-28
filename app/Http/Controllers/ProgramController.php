@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Program;
 use App\Models\ProgramUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramController extends Controller
 {
@@ -26,9 +27,27 @@ class ProgramController extends Controller
     {
         return ProgramUser::with('program')->where('user_id',$user_id)->get();
     }
+       public function getMyPrograms()
+    {
+        return ProgramUser::with('program')->where('user_id',Auth::user()->id)->paginate(6);
+    }
     public function getUsers($id)
     {
         return ProgramUser::with('user')->where('prog_id',$id)->limit(10)->get();
+    }
+     public function join($id)
+    {
+        $user_id = Auth::user()->id;
+         if (ProgramUser::where('user_id', $user_id )->where('prog_id', $id)->count() != 0) {
+            return response()->json(['data' => ['msg' => "You  already in this program"]], 403);
+        }
+        else{
+            $prog_user = new ProgramUser();
+            $prog_user->user_id = $user_id;
+            $prog_user->prog_id = $id;
+            $prog_user->save();
+            return $prog_user;
+        }
     }
 
 
@@ -79,5 +98,10 @@ class ProgramController extends Controller
         $program = Program::findOrfail($id);
         if($program->delete()) return  true;
         return "Error while deleting";
+    }
+     public function searchProgram(Request $request)
+    {
+        $name = $request->input('name');
+        return Program::with('company')->where('name', 'like', $name . '%')->withCount(['reports','users'])->paginate(6);;
     }
 }

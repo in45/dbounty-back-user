@@ -13,7 +13,7 @@ class UserController extends Controller
 {
      public function index()
     {
-        return User::orderBy('score','desc')->paginate(10);
+        return User::paginate(10);
     }
 
     public function show($user_id)
@@ -63,6 +63,11 @@ class UserController extends Controller
         $user->state = !$user->state;
         $user->save();
         return $user;
+    }
+      public function searchUser(Request $request)
+    {
+        $username = $request->input('username');
+        return User::where('username', 'like', $username . '%')->paginate(6);;
     }
 
 

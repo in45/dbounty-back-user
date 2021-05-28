@@ -23,17 +23,11 @@ class Company extends Model
         return $this->hasMany('App\Models\CompanyManager','company_id','id');
     }
 
-    protected $appends = ['is_manager'];
+
     protected $hidden = ['managers', 'alpha_code','beta_code'];
 
 
 
 
-    public function getIsManagerAttribute()
-    {
-        //$user = Auth::user();
-        $id = '1';
-        $managers = $this->managers->pluck('manager_id')->toArray();
-        return in_array($id, $managers);
-    }
+   
 }

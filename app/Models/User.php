@@ -19,7 +19,7 @@ class User extends Authenticatable implements JWTSubject
     protected static function boot()
     {
         parent::boot();
-        static::addGlobalScope(new OrderScope('created_at', 'desc'));
+        static::addGlobalScope(new OrderScope('reputation', 'desc'));
         static::creating(function ($post) {
             $post->{$post->getKeyName()} = (string) Str::uuid();
         });
