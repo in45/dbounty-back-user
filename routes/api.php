@@ -47,7 +47,6 @@ Route::get('evolution', [StatController::class, 'Evolution']); //bounty evolutio
 Route::get('reports_stats', [StatController::class, 'getUserReportsStats']);//reports status_count and severity_count
 
 Route::get('programs', [ProgramController::class, 'index']);
-Route::get('reports', [ReportController::class, 'index']);
 Route::post('programs/search', [ProgramController::class, 'searchProgram']);
 Route::get('programs/{id}', [ProgramController::class, 'show']);
 Route::post('programs/{id}/join', [ProgramController::class, 'join']);
@@ -63,3 +62,5 @@ Route::get('users/{user_id}/reports', [ReportController::class, 'getUserReports'
 Route::get('users/{user_id}/programs', [ProgramController::class, 'getUserPrograms']);
 Route::get('me/reports', [ReportController::class, 'getMyReports']);
 Route::get('me/programs', [ProgramController::class, 'getMyPrograms']);
+Route::post('me/reports', [ReportController::class, 'getFiltredReports']);
+

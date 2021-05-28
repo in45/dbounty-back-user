@@ -35,6 +35,14 @@ class ReportController extends Controller
     {
         return Report::with(['program','vuln'])->where('user_id',Auth::user()->id)->paginate(6);
     }
+      public function getFiltredReports(Request $request)
+    {
+        $status = $request->input('status');
+
+        return Report::with(['user','vuln','program'])->where('status', 'like', $status . '%')->where('user_id',Auth::user()->id)->paginate(6);
+
+    }
+
 
        public function getMyProgramrReport($id)
     {
