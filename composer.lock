@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cfab25a3083943565624229bfd62549d",
+    "content-hash": "4caddbf02bd74c20264cc8254359adc6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -855,6 +855,55 @@
                 "source": "https://github.com/guzzle/psr7/tree/1.8.2"
             },
             "time": "2021-04-26T09:17:50+00:00"
+        },
+        {
+            "name": "kornrunner/keccak",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kornrunner/php-keccak.git",
+                "reference": "433749d28e117fb97baf9f2631b92b5d9ab3c890"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kornrunner/php-keccak/zipball/433749d28e117fb97baf9f2631b92b5d9ab3c890",
+                "reference": "433749d28e117fb97baf9f2631b92b5d9ab3c890",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "symfony/polyfill-mbstring": "^1.8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "kornrunner\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Boris Momcilovic",
+                    "homepage": "https://github.com/kornrunner/php-keccak"
+                }
+            ],
+            "description": "Pure PHP implementation of Keccak",
+            "keywords": [
+                "keccak",
+                "sha-3",
+                "sha3-256"
+            ],
+            "support": {
+                "issues": "https://github.com/kornrunner/php-keccak/issues",
+                "source": "https://github.com/kornrunner/php-keccak/tree/1.1.0"
+            },
+            "time": "2020-12-07T15:40:44+00:00"
         },
         {
             "name": "laravel/framework",
@@ -1789,6 +1838,45 @@
                 "source": "https://github.com/opis/closure/tree/3.6.2"
             },
             "time": "2021-04-09T13:42:10+00:00"
+        },
+        {
+            "name": "pelieth/laravel-ecrecover",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pelith/laravel-ecrecover.git",
+                "reference": "b6effbd0e68f9ad38911591a7edcace261da5a3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pelith/laravel-ecrecover/zipball/b6effbd0e68f9ad38911591a7edcace261da5a3b",
+                "reference": "b6effbd0e68f9ad38911591a7edcace261da5a3b",
+                "shasum": ""
+            },
+            "require": {
+                "kornrunner/keccak": "^1.0",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pelieth\\LaravelEcrecover\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Ecrecover functions of Ethereum written for Laravel.",
+            "support": {
+                "issues": "https://github.com/pelith/laravel-ecrecover/issues",
+                "source": "https://github.com/pelith/laravel-ecrecover/tree/master"
+            },
+            "time": "2020-11-30T13:06:05+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -7622,6 +7710,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "pelieth/laravel-ecrecover": 20,
         "tymon/jwt-auth": 20
     },
     "prefer-stable": true,

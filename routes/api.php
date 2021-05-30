@@ -26,6 +26,7 @@ Route::pattern('id', '[0-9]*');
 
 //API For Users
 Route::post('login', [AuthController::class, 'login']);
+Route::post('sign', [AuthController::class, 'sign']);
 Route::post('register', [AuthController::class, 'register']);
 Route::group(['middleware' => ['is.auth']], function() {
     Route::get('me', [AuthController::class, 'me']);
@@ -61,6 +62,7 @@ Route::get('users/{user_id}', [UserController::class, 'show']);
 Route::get('users/{user_id}/reports', [ReportController::class, 'getUserReports']);
 Route::get('users/{user_id}/programs', [ProgramController::class, 'getUserPrograms']);
 Route::get('me/reports', [ReportController::class, 'getMyReports']);
+Route::get('reports', [ReportController::class, 'index']);
 Route::get('me/programs', [ProgramController::class, 'getMyPrograms']);
 Route::post('me/reports', [ReportController::class, 'getFiltredReports']);
 

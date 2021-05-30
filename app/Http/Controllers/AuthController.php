@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Pelieth\LaravelEcrecover\EthSigRecover;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -20,6 +22,29 @@ class AuthController extends Controller
             'user'=> Auth::user()
         ]);
     }
+    public function sign(Request $request)
+    {
+
+        $providedAddress =  $request->input('public_address');
+        $signature = $request->input('signature');
+        $message = "Welcome To Dbounty !";
+        $eth_sig_util = new EthSigRecover();
+        $recoveredAddress = $eth_sig_util->personal_ecRecover($message, $signature);
+         if(strtolower($recoveredAddress) == strtolower($providedAddress)){
+             $user= User::where('public_address',$providedAddress)->first();
+             if (!$userToken=JWTAuth::fromUser($user)) {
+                 return response()->json(['error' => 'invalid_credentials'], 401);
+             }
+             return response()->json([
+                 'token'=>$this->respondWithToken($userToken),
+                 'user'=> $user
+             ]);
+         }
+         else return response()->json(['error' => 'Unauthorized'], 401);
+
+
+    }
+
 
     protected function respondWithToken($token)
     {

@@ -63,6 +63,10 @@ class User extends Authenticatable implements JWTSubject
     {
         return 'string';
     }
+    public function getJWTIdentifier()
+    {
+        return  $this->getKey();
+    }
     /**
      * Return a key value array, containing any custom claims to be added to the JWT.
      *
@@ -97,8 +101,5 @@ class User extends Authenticatable implements JWTSubject
         return count($this->programs()->where('thanks',1)->get());
     }
 
-    public function getJWTIdentifier()
-    {
-       return  $this->getKey();
-    }
+
 }

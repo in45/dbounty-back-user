@@ -35,7 +35,7 @@ class UserController extends Controller
         $token = auth()->attempt(['email'=>$user->email,'password'=>$request->input('password')]);
         return response()->json([
             'token'=>$this->respondWithToken($token),
-            'admin'=> $user
+            'user'=> $user
         ]);
     }
 
