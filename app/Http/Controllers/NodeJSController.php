@@ -7,26 +7,27 @@ use Illuminate\Support\Facades\Http;
 
 class NodeJSController extends Controller
 {
-    // NodeJSController::post('badge_users',['badge'=>$badge->ToArray(),
-    //                                                                'user_badge'=>$user_badge->ToArray()
-    //                ]);
+    
     static function  get($endpoint,$data)
     {
         $api_token = "aa";
-        $URL_WEBSOCKET = "http://localhost:5000/" ;
-        $response = Http::withToken($api_token)->async()->get($URL_WEBSOCKET.$endpoint,
-            $data
-        );
-        return $response;
+           try{
+            $response = Http::withToken($api_token)->async()->get(env('URL_WEBSOCKET').$endpoint,$data);
+            
+            if($response->successful()) return $response;
+            else $response->throw();
+        } catch(\Exception $e){}
+        
     }
 
     static function  post($endpoint,$data)
     {
         $api_token = "aa";
-        $URL_WEBSOCKET = "http://localhost:5000/" ;
-        $response = Http::withToken($api_token)->post($URL_WEBSOCKET.$endpoint,
-            $data
-        );
-        return $response;
+         try{
+            $response = Http::withToken($api_token)->post(env('URL_WEBSOCKET').$endpoint,$data);
+            
+            if($response->successful()) return $response;
+            else $response->throw();
+        } catch(\Exception $e){}
     }
 }

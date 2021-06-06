@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ReportMessageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StatController;
@@ -30,6 +31,7 @@ Route::post('sign', [AuthController::class, 'sign']);
 Route::post('register', [AuthController::class, 'register']);
 Route::group(['middleware' => ['is.auth']], function() {
     Route::get('me', [AuthController::class, 'me']);
+    Route::post('logout', [AuthController::class, 'logout']);
 });
 
 
@@ -55,7 +57,8 @@ Route::get('programs/{id}/users', [ProgramController::class, 'getUsers']);
 Route::get('programs/{id}/reports', [ReportController::class, 'getProgramReports']);
 Route::get('programs/{id}/my_report', [ReportController::class, 'getMyProgramrReport']);
 Route::post('programs/{id}/report', [ReportController::class, 'store']);
-Route::post('programs/{id}reports/{report_id}', [ReportController::class, 'update']);
+Route::post('programs/{id}/reports/{report_id}', [ReportController::class, 'update']);
+Route::get('reports/{id}', [ReportController::class, 'show']);
 Route::get('users', [UserController::class, 'index']);
 Route::post('users/search', [UserController::class, 'searchUser']);
 Route::get('users/{user_id}', [UserController::class, 'show']);
@@ -65,4 +68,7 @@ Route::get('me/reports', [ReportController::class, 'getMyReports']);
 Route::get('reports', [ReportController::class, 'index']);
 Route::get('me/programs', [ProgramController::class, 'getMyPrograms']);
 Route::post('me/reports', [ReportController::class, 'getFiltredReports']);
+Route::get('me/messages', [ReportMessageController::class, 'getMessages']);
+Route::post('reports/{id}/messages', [ReportMessageController::class, 'store']);
+Route::get('reports/{id}/messages', [ReportMessageController::class, 'getReportMessages']);
 

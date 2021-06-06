@@ -19,8 +19,8 @@ class CreateReportMessagesTable extends Migration
             $table->uuid('from');
             $table->uuid('to');
             $table->text('message');
-            $table->string('type')->nullable();// manager / admin
-            $table->string('attachment');
+            $table->string('type')->nullable();// am,au,ma,mu,ua,um
+            $table->string('attachment')->nullable();
             $table->boolean('read')->default(0);
             $table->timestamps();
             $table->softDeletes();

@@ -15,7 +15,7 @@ class ReportController extends Controller
 
     public function show($id)
     {
-        return Report::findOrFail($id);
+        return Report::with('vuln')->findOrFail($id);
     }
       public function getProgramReports($id)
     {
