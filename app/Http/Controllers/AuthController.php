@@ -58,10 +58,15 @@ class AuthController extends Controller
     {
         $user = new User();
         $user->email = $request->input('email');
+        $user->username = $request->input('username');
+        $user->public_address = $request->input('public_address');
         $user->password = bcrypt($request->input('password'));
         $user->save();
         $token = auth()->attempt(['email'=>$user->email,'password'=>$request->input('password')]);
-        return $this->respondWithToken($token);
+        return response()->json([
+            'token'=>$this->respondWithToken($token),
+            'user'=> Auth::user()
+        ]);
     }
     public function me(){
         return  Auth::user();

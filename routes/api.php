@@ -8,6 +8,7 @@ use App\Http\Controllers\ReportMessageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StatController;
+use App\Http\Controllers\ManagerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -71,4 +72,6 @@ Route::post('me/reports', [ReportController::class, 'getFiltredReports']);
 Route::get('me/messages', [ReportMessageController::class, 'getMessages']);
 Route::post('reports/{id}/messages', [ReportMessageController::class, 'store']);
 Route::get('reports/{id}/messages', [ReportMessageController::class, 'getReportMessages']);
+
+Route::post('request_company', [ManagerController::class, 'requestCompany']);
 
