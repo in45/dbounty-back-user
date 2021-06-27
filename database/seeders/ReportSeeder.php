@@ -42,7 +42,7 @@ class ReportSeeder extends Seeder
                 'vuln_details' => $faker->text($maxNbChars = 50),
                 'validation_steps' => $faker->text,
                 'severity' => $faker->randomElement(['low','medium','high','critical']),
-                'status' => $faker->randomElement(['new', 'needs more info', 'triaged', 'accepted', 'resolved', 'duplicate', 'informative', 'not applicable']),
+                'status' => $faker->randomElement(['new', 'needs more info', 'triaged', 'accepted', 'resolved', 'duplicate', 'informative', 'not applicable','saved','pre-submission','pending']),
                 'bounty_win' => $faker->numberBetween($min = 100, $max = 9000),
                 'bounty_at' =>  Carbon::now()->format('Y-m-d H:i:s'),
                 'created_at' =>  Carbon::now()->format('Y-m-d H:i:s'),

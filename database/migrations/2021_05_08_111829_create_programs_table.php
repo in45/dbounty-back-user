@@ -19,7 +19,7 @@ class CreateProgramsTable extends Migration
             $table->integer('company_id');
             $table->string('type')->default('public');//public,private,test
             $table->string('logo')->default("http://via.placeholder.com/640x480.png/14c9ac?text=program");
-            $table->string('status')->default('pending');// 0:pending , 1:new , 2:open , 3:closed
+            $table->enum('status',['pending','new', 'open', 'closed'])->default('pending');
             $table->boolean('managed_by_dbounty')->default(1);
             $table->float('min_bounty')->default(0);
             $table->float('max_bounty')->default(0);

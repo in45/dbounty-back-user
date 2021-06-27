@@ -17,12 +17,12 @@ class CreateManagersTable extends Migration
             $table->uuid('id')->primary();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('public_address');
+            $table->string('public_address')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('username')->unique();
             $table->string('avatar')->default("http://via.placeholder.com/640x480.png/FF0000?text=manager");
-            $table->string('role')->nullable();
+            $table->enum('role',['sysalpha','sysbeta'])->default('sysalpha');
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
             $table->softDeletes();

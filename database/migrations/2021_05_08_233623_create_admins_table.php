@@ -17,10 +17,11 @@ class CreateAdminsTable extends Migration
             $table->uuid('id')->primary();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('public_address');
+            $table->string('public_address')->nullable();
             $table->string('username')->unique();
             $table->boolean('first_time_login')->default(1);
-            $table->string('role')->nullable();//sudo : all permissions,sysmanage : manage reports,sysmoni : monitoring
+            $table->enum('role',['sudo','sysmanage', 'sysmoni'])->default('sysmanage')->nullable();
+             //sudo : all permissions,sysmanage : manage reports,sysmoni : monitoring
             $table->timestamps();
             $table->softDeletes();
         });
