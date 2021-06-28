@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ReportController extends Controller
 {
@@ -50,14 +51,15 @@ class ReportController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
 
         $report = new Report();
+        $report->title = 'Report-'.'0x'.Str::random(10);
         if($request->input('target')) $report->target = $request->input('target');
         if($request->input('vuln_id')) $report->vuln_id = $request->input('vuln_id');
-        if($request->input('user_id')) $report->user_id = $request->input('user_id');
-        if($request->input('prog_id')) $report->prog_id = $request->input('prog_id');
+         $report->user_id = Auth::user()->id;
+         $report->prog_id = $id;
         if($request->input('vuln_name')) $report->vuln_name = $request->input('vuln_name');
         if($request->input('vuln_details')) $report->vuln_details = $request->input('vuln_details');
         if($request->input('validation_steps')) $report->validation_steps = $request->input('validation_steps');
@@ -75,8 +77,6 @@ class ReportController extends Controller
         $report = Report::findOrFail($id);
         if($request->input('target')) $report->target = $request->input('target');
         if($request->input('vuln_id')) $report->vuln_id = $request->input('vuln_id');
-        if($request->input('user_id')) $report->user_id = $request->input('user_id');
-        if($request->input('prog_id')) $report->prog_id = $request->input('prog_id');
         if($request->input('vuln_name')) $report->vuln_name = $request->input('vuln_name');
         if($request->input('vuln_details')) $report->vuln_details = $request->input('vuln_details');
         if($request->input('validation_steps')) $report->validation_steps = $request->input('validation_steps');

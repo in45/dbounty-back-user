@@ -39,13 +39,16 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request,$user_id)
+    public function update(Request $request)
     {
-        $user = User::findOrFail($user_id);
+        $user = User::findOrFail(Auth::user()->id);
            if($request->input('public_address')) $user->public_address = $request->input('public_address');
       if($request->input('username')) $user->username = $request->input('username');
       if($request->input('email')) $user->email = $request->input('email');
       if($request->input('country')) $user->country = $request->input('country');
+      if($request->input('first_name')) $user->first_name = $request->input('first_name');
+      if($request->input('last_name')) $user->last_name = $request->input('last_name');
+      if($request->input('phone')) $user->phone = $request->input('phone');
         if($request->file('avatar')) $user->avatar = $request->file('avatar')->storeAs('users', $request->avatar->getClientOriginalName(), 'public');
 
         $user->save();

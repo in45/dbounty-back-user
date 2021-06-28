@@ -57,7 +57,7 @@ Route::post('programs/{id}/join', [ProgramController::class, 'join']);
 Route::get('programs/{id}/users', [ProgramController::class, 'getUsers']);
 Route::get('programs/{id}/reports', [ReportController::class, 'getProgramReports']);
 Route::get('programs/{id}/my_report', [ReportController::class, 'getMyProgramrReport']);
-Route::post('programs/{id}/report', [ReportController::class, 'store']);
+Route::post('programs/{id}/submit', [ReportController::class, 'store']);
 Route::post('programs/{id}/reports/{report_id}', [ReportController::class, 'update']);
 Route::get('reports/{id}', [ReportController::class, 'show']);
 Route::get('users', [UserController::class, 'index']);
