@@ -1,62 +1,44 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# DBounty User Backend
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Overview
 
-## About Laravel
+The **DBounty User Backend** is the server-side application for the DBounty platform, built with Laravel. It handles backend operations for vulnerability researchers (bounty hunters), including user authentication, report submission, and interaction with smart contracts. This backend ensures secure and efficient management of user data, report processing, and communication with Ethereum smart contracts.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **User Authentication:** Secure authentication using JWT with RSA Algorithm.
+- **Report Management:** Handle the creation, validation, and processing of vulnerability reports.
+- **Smart Contract Interaction:** Interface with Ethereum smart contracts to manage platform functionalities.
+- **Real-Time Communication:** Support for WebSocket communication for instant updates and chat functionalities.
+- **Email Notifications:** Manage email notifications using Laravel's Mailable class.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Application Structure
 
-## Learning Laravel
+The User Backend is organized into:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Controllers:** Manage HTTP requests and responses.
+- **Models:** Define and interact with database entities.
+- **Services:** Implement business logic and interact with smart contracts.
+- **Middleware:** Handle request filtering and authentication.
+- **Routes:** Define API endpoints for frontend communication.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Authentication
 
-## Laravel Sponsors
+- **Method:** JSON Web Token (JWT) with RSA Algorithm.
+- **Details:** JWT is used to secure API requests. The token is issued after user authentication via MetaMask and is required for accessing protected endpoints.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Real-Time Communication
 
-### Premium Partners
+- **Protocol:** WebSocket.
+- **Usage:** Used for real-time updates on report status and chat messages between users and company managers.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+## Email System
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- **Framework:** Laravel's Mailable class.
+- **Usage:** Sends notifications to users regarding report status changes and other platform-related updates.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+
